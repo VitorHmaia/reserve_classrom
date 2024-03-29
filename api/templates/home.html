@@ -1,0 +1,53 @@
+{% extends "main.html" %} {% block content %}
+<title>Página Inicial</title>
+<style>
+  .weather-card {
+    margin: 20px;
+    padding: 15px;
+    width: 350px;
+    height: 200px;
+    border: 0.5px solid gray;
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  .weather-info {
+    font-size: 16px;
+    color: black;
+  }
+
+  .weather-title {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    /* Adicione esta linha para tornar os títulos em negrito */
+  }
+
+  .home-page {
+    color: #007bff;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+
+<div class="row">
+  {% for class in classes %}
+
+  <div class="col-md-4">
+    <div class="weather-card">
+      <h5 class="weather-title">Informações de Classe</h5>
+      <div class="weather-info">
+        <p><strong>Nome:</strong> {{ class.nome }}</p>
+        <p><strong>Responsavel:</strong> {{ class.responsavel}}</p>
+        <a href="{% url 'Update Class' id=class.id %}">Editar</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock content %}
